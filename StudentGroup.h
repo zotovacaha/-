@@ -1,12 +1,11 @@
-#pragma once
-
-#ifndef studentGroup_h
-#define studentGroup_h
+#ifndef studentgroup_h
+#define studentgroup_h
 
 #include "pch.h"
 #include <stdio.h>
+#include <algorithm>
 #include <vector>
-#include "student.h"
+#include "Student.h"
 
 using namespace std;
 
@@ -17,7 +16,7 @@ private:
 	vector<Student*> listOfStudents;
 public:
 	void addStudent(Student* student);
-	Student* getStudentByName(string name);
+	Student* getStudentByName(string &name);
 	void deleteStudent(Student* student);
 	int getGroupNumber();
 	void setGroupNumber(int groupNumber);
@@ -25,4 +24,4 @@ public:
 	vector<Student*> getListOfStudentsSortedByGrades();
 	StudentGroup(int number);
 };
-#endif /* studentGroup_h */
+#endif 
