@@ -9,14 +9,13 @@
 #include "student.h"
 #include "studentGroup.h"
 #include "windows.h"
+
+
 using namespace std;
 
-void printStudentsToFile(vector<Student*> ListOfStudents, int groupNumber);
-
 int main(int argc, const char * argv[]) {
-
-	setlocale(LC_ALL, "Russian");
-        srand(time(NULL));
+	setlocale(0, "");
+	srand(time(NULL));
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	Student* listOfAllStudents[10];
@@ -52,12 +51,11 @@ int main(int argc, const char * argv[]) {
 	{
 		int indGroup = rand() % 5;
 		int indStud = rand() % 10;
-		//cout<<indStud<<"----"<<endl;
-	   //listOfAllGroups[indGroup]->addStudent(listOfAllStudents[i]);
+		
 		listOfAllGroups[indGroup]->addStudent(listOfAllStudents[indStud]);
 
 	}
-	// listOfAllGroups[0]->addStudent(listOfAllStudents[0]);
+	
 	cout << "Группы были заполнены студентами." << endl;
 	//Вывод в ostream
 	filebuf fb;
@@ -154,5 +152,10 @@ int main(int argc, const char * argv[]) {
 	}
 	return 0;
 }
+
+
+
+
+
 
 
