@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "studentGroup.h"
+
 StudentGroup::StudentGroup(int number)
 {
 	this->groupNumber = number;
@@ -13,7 +14,6 @@ void StudentGroup::addStudent(Student* student)
 		}
 		else {
 			listOfStudents.push_back(student);
-			student->increaseGroupCount();
 			student->addGroupNumber(this->groupNumber);
 		}
 	}
@@ -25,7 +25,6 @@ void StudentGroup::deleteStudent(Student* student)
 {
 	vector<Student*>::iterator position = find(listOfStudents.begin(), listOfStudents.end(), student);
 	if (position != listOfStudents.end()) {
-		student->decreaseGroupCount();
 		student->deleteGroupNumber(this->groupNumber);
 		listOfStudents.erase(position);
 	}
@@ -41,7 +40,7 @@ void StudentGroup::setGroupNumber(int groupNumber)
 {
 	this->groupNumber = groupNumber;
 }
-Student* StudentGroup::getStudentByName(string name)
+Student* StudentGroup::getStudentByName(string& name)
 {
 	int i = 0;
 	for (i = 0; listOfStudents.size(); i++)
@@ -59,26 +58,20 @@ vector<Student*> StudentGroup::getListOfStudents()
 vector<Student*> StudentGroup::getListOfStudentsSortedByGrades()
 {
 	vector<Student*> tempVector = listOfStudents;
-	Student* tempStudent = new Student();
-	//BUBBLE SORT
+	//SORT
 	if (listOfStudents.empty())
 	{
 		cout << "В группе " << this->groupNumber << "нет студентов." << endl;
 		return tempVector;
 	}
 	else {
-		for (int i = 0; i < tempVector.size() - 1; i++) {
-			for (int j = 0; j < tempVector.size() - i - 1; j++) {
-				if (tempVector[j]->getMinGrade() > tempVector[j + 1]->getMinGrade()) {
-					tempStudent = tempVector[j];
-					tempVector[j] = tempVector[j + 1];
-					tempVector[j + 1] = tempStudent;
-				}
-			}
-		}
-		//BUBBLE SORT
-		return tempVector;
+		sort(tempVector.begin(), tempVector.end(), [](Student* a, Student* b)
+		{
+			return a->getMinGrade() < b->getMinGrade();
+		});
 	}
+
+	return tempVector;
 }
 
 
