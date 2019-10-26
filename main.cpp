@@ -8,13 +8,9 @@
 #include <ctime>
 #include "student.h"
 #include "studentGroup.h"
-
 #include "windows.h"
-
-
-
-
 using namespace std;
+
 void printStudentsToFile(vector<Student*> ListOfStudents, int groupNumber);
 
 int main(int argc, const char * argv[]) {
