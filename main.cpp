@@ -16,9 +16,7 @@ void printStudentsToFile(vector<Student*> ListOfStudents, int groupNumber);
 int main(int argc, const char * argv[]) {
 
 	setlocale(LC_ALL, "Russian");
-
-
-	srand(time(NULL));
+        srand(time(NULL));
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	Student* listOfAllStudents[10];
