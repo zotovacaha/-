@@ -1,25 +1,18 @@
 #include "pch.h"
-#include "student.h"
+#include "Student.h"
 Student::Student(string name)
 {
-	this->groupCount = 0;
+	
 	this->name = name;
 	this->min_grade = rand() % (5 - 2 + 1) + 2;
 }
 Student::Student()
 {
-	this->groupCount = 0;
+	
 	this->name = "";
 	this->min_grade = 0;
 }
-void Student::increaseGroupCount()
-{
-	this->groupCount += 1;
-}
-void Student::decreaseGroupCount()
-{
-	this->groupCount -= 1;
-}
+
 void Student::addGroupNumber(int groupNumber)
 {
 	groupNumbers.push_back(groupNumber);
@@ -43,9 +36,9 @@ int Student::getMinGrade()
 }
 int Student::getGroupCount()
 {
-	return this->groupCount;
+	return this->groupNumbers.size();
 }
-vector<int> Student::getGroupNumbers()
+const vector<int>& Student::getGroupNumbers()
 {
 	return this->groupNumbers;
 }
